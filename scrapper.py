@@ -17,10 +17,11 @@ JACKETT_ADMIN_PASSWORD = os.environ['JACKETT_ADMIN_PASSWORD']
 REAL_DEBRID_API_URL = "https://api.real-debrid.com/rest/1.0"
 REAL_DEBRID_API_KEY = os.environ['REAL_DEBRID_API_KEY']
 
-MOVIE_TV_CATEGORIES = [2000, 5000]  # 2000 for movies, 5000 for TV shows
-TRACKER_DOMAIN = os.environ.get('TRACKER_DOMAIN', 'ygg.re')
+MOVIE_TV_CATEGORIES = [int(cat) for cat in os.environ['MOVIE_TV_CATEGORIES'].split(',')]
+TRACKER_DOMAIN = os.environ.get('TRACKER_DOMAIN', '')
 MAX_ADDS_PER_MINUTE = int(os.environ.get('MAX_ADDS_PER_MINUTE', 5))
 WAIT_TIME = float(os.environ.get('WAIT_TIME_SECONDS', 12))
+RD_DOWNLOADED_STATUS = os.environ['RD_DOWNLOADED_STATUS']
 
 def login_to_jackett():
     session = requests.Session()
@@ -70,9 +71,9 @@ def check_torrent_status_on_rd(torrent_hash, headers):
             if isinstance(torrent_info, list):
                 for item in torrent_info:
                     if isinstance(item, dict) and item.get('rd'):
-                        return "downloaded"
+                        return RD_DOWNLOADED_STATUS
             elif isinstance(torrent_info, dict) and torrent_info.get('rd'):
-                return "downloaded"
+                return RD_DOWNLOADED_STATUS
         
         return "not_available"
     except requests.RequestException as e:
@@ -104,7 +105,7 @@ def add_torrent_to_real_debrid(torrent_file_path, name):
         
         status = check_torrent_status_on_rd(torrent_hash, headers)
         
-        if status != "downloaded":
+        if status != RD_DOWNLOADED_STATUS:
             print(f"The torrent is not available on Real-Debrid or not yet downloaded.")
             return False
         
@@ -186,8 +187,11 @@ def is_movie_or_tv(result):
     return any(cat in MOVIE_TV_CATEGORIES for cat in result.get('Category', []))
 
 def is_from_tracker(result):
+    if not TRACKER_DOMAIN:
+        return True  
     details_url = result.get('Details', '')
     return TRACKER_DOMAIN in urlparse(details_url).netloc
+
 
 def main():
     print("Connecting to Jackett")
