@@ -54,6 +54,16 @@ It checks if the torrent is already cached on Real-Debrid.
 If cached and not already in your account, it adds the torrent to your Real-Debrid account.
 
 
+Certainly! I'll explain the installation method for GitHub in English, step by step.
+Installation Method for GitHub:
+
+Clone the Repository:
+
+Open a terminal or command prompt.
+Navigate to the directory where you want to install the project.
+Run the following command:
+
+
 The script waits for a specified time between processing each torrent to avoid overloading the APIs.
 Finally, it saves a CSV file with the results of the operation.
 
