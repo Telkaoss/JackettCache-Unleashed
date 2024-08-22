@@ -68,3 +68,84 @@ The script waits for a specified time between processing each torrent to avoid o
 Finally, it saves a CSV file with the results of the operation.
 
 This script allows you to automate the process of finding and adding torrents to Real-Debrid, focusing on your preferred content types and potentially a specific tracker, all while respecting rate limits and avoiding duplicates.
+
+
+Certainly! I'll explain the installation method for GitHub in English, step by step.
+
+
+
+Installation Method :
+
+1. Clone the Repository:
+   - Open a terminal or command prompt.
+   - Navigate to the directory where you want to install the project.
+   - Run the following command:
+     ```
+     git clone https://github.com/your-username/your-repo-name.git
+     ```
+   - Replace `your-username` and `your-repo-name` with the actual GitHub username and repository name.
+
+2. Navigate to the Project Directory:
+   ```
+   cd your-repo-name
+   ```
+
+3. Set Up a Virtual Environment (Optional but Recommended):
+   - For Python 3:
+     ```
+     python3 -m venv venv
+     ```
+   - Activate the virtual environment:
+     - On Windows: `venv\Scripts\activate`
+     - On macOS and Linux: `source venv/bin/activate`
+
+4. Install Dependencies:
+   - Ensure you have a `requirements.txt` file in your repository with all necessary dependencies.
+   - Run:
+     ```
+     pip install -r requirements.txt
+     ```
+
+5. Set Up Environment Variables:
+   - Create a `.env` file in the project root directory.
+   - Add your configuration variables to this file:
+     ```
+     JACKETT_BASE_URL=http://your-jackett-url:port
+     JACKETT_API_KEY=your-jackett-api-key
+     JACKETT_ADMIN_PASSWORD=your-jackett-password
+     REAL_DEBRID_API_KEY=your-real-debrid-api-key
+     MOVIE_TV_CATEGORIES=2000,5000
+     MAX_ADDS_PER_MINUTE=5
+     WAIT_TIME_SECONDS=12
+     RD_DOWNLOADED_STATUS=downloaded
+     TRACKER_DOMAIN=ygg.re
+     ```
+   - Replace the values with your actual configuration.
+
+6. Docker Setup (if using Docker):
+   - Ensure Docker and Docker Compose are installed on your system.
+   - The repository should include a `Dockerfile` and `docker-compose.yml`.
+   - Build and run the Docker container:
+     ```
+     docker-compose up --build
+     ```
+
+7. Run the Script:
+   - If not using Docker, run:
+     ```
+     python scraper.py
+     ```
+   - The script will start running based on your configuration in the `.env` file.
+
+8. Check the Results:
+   - After the script finishes, check the `results.csv` file in the `/data` directory for the operation results.
+
+Additional Notes:
+- Ensure that your Jackett and Real-Debrid accounts are properly set up and accessible.
+- Keep your API keys and passwords secure and never share them publicly.
+- Regularly check for updates to the repository and update your local copy:
+  ```
+  git pull origin main
+  ```
+
+This installation method allows users to easily set up and run your script from a GitHub repository, with the flexibility to configure it for their specific needs using environment variables.
