@@ -1,5 +1,5 @@
 Script Overview:
-This script, which we can call "CacheFlow: From Jackett to Real-Debrid", automates the process of fetching torrent information from Jackett's cache and adding selected torrents to your Real-Debrid account. It filters torrents based on categories (movies and TV shows) and can optionally filter by a specific tracker.
+This script, which we can call "JackettCache-Unleashed: From Jackett to Real-Debrid", automates the process of fetching torrent information from Jackett's cache and adding selected torrents to your Real-Debrid account. It filters torrents based on categories (movies and TV shows) and can optionally filter by a specific tracker.
 Environment Variables (.env file):
 
 ```
