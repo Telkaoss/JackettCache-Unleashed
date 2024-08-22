@@ -6,27 +6,35 @@ Environment Variables (.env file):
 JACKETT_BASE_URL
 Purpose: Specifies the URL where your Jackett instance is running.
 Example: JACKETT_BASE_URL=http://localhost:9117
+
 JACKETT_API_KEY
 Purpose: Your unique API key for accessing Jackett.
 Example: JACKETT_API_KEY=abcdef1234567890
+
 JACKETT_ADMIN_PASSWORD
 Purpose: The admin password for your Jackett instance.
 Example: JACKETT_ADMIN_PASSWORD=your_secure_password
+
 REAL_DEBRID_API_KEY
 Purpose: Your API key for accessing Real-Debrid services.
 Example: REAL_DEBRID_API_KEY=your_real_debrid_api_key
+
 MOVIE_TV_CATEGORIES
 Purpose: Defines which Jackett categories to consider (usually movies and TV shows).
 Example: MOVIE_TV_CATEGORIES=2000,5000
+
 MAX_ADDS_PER_MINUTE
 Purpose: Limits how many torrents can be added to Real-Debrid per minute.
 Example: MAX_ADDS_PER_MINUTE=5
+
 WAIT_TIME_SECONDS
 Purpose: Sets the wait time between processing each torrent.
 Example: WAIT_TIME_SECONDS=12
+
 RD_DOWNLOADED_STATUS
 Purpose: Defines the status string that Real-Debrid uses for downloaded torrents.
 Example: RD_DOWNLOADED_STATUS=downloaded
+
 TRACKER_DOMAIN
 Purpose: Optionally specifies a tracker domain to filter torrents.
 Example: TRACKER_DOMAIN=ygg.re
